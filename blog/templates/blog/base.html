@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div id="sidebar">
+    
+
+    {% if user.is_authenticated %}
+      <p>Hi {{ user.username }}</p>
+    {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">Log In</a>
+      <a href="{% url 'register' %}">Register</a>
+
+    {% endif %}
+    <h2>My blog</h2>
+    <p>This is my blog.</p>
+  </div>
+</body>
+</html>
